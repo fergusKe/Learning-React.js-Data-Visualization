@@ -1,7 +1,7 @@
 {
 	"name":"Ben",
 	"age":33,
-	"smart":false,
+	"smart":true,
 	"friends":["Dan", "Sam", "Samanta"],
 	"eyes": {
 		"left":"green",

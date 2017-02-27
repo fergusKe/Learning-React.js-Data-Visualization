@@ -2,8 +2,12 @@ import React from 'react';
 
 export default class App extends React.Component {
   render() {
+    var smartMessage = this.props.smart ? "He is smart." : "He is not smart."
     return (
-      <h1>Hello world</h1>
+      <div>
+        <h1>{this.props.name}</h1>
+        <p>He is least {this.props.age} years old. {smartMessage}</p>
+      </div>
     )
   }
 }
