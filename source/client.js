@@ -1,3 +1,7 @@
+import React from 'react';
+import ReactDom from 'react-dom';
+import App from './components/app';
+
 import data from "./data.json";
 
-document.body.innerText = data.name;
+ReactDom.render(<App />, document.getElementById('react'));
