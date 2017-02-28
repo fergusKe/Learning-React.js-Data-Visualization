@@ -23,6 +23,17 @@ export default class Map extends React.Component {
 
     console.log(ws);
 
+    var xhr = new XMLHttpRequest();
+        xhr.open('GET', ws);
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            console.log(xhr.responseText);
+          } else {
+            // ERROR
+          }
+        };
+        xhr.send();
+
   }
 
   render() {
