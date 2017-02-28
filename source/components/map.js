@@ -1,6 +1,14 @@
 import React from 'react';
+import Griddle from 'griddle-react';
 
 export default class Map extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.onClick = this.onClick.bind(this);
+    this.state = { cities: [] };
+  }
+
   onClick(e) {
     let img = e.target,
         point = { x: e.offsetX, y: e.offsetY },
@@ -27,7 +35,8 @@ export default class Map extends React.Component {
         xhr.open('GET', ws);
         xhr.onload = () => {
           if (xhr.status === 200) {
-            console.log(xhr.responseText);
+            this.setState({ cities: JSON.parse(xhr.responseText).geonames });
+            console.log('bb = ', this.state.cities);
           } else {
             // ERROR
           }
@@ -38,7 +47,10 @@ export default class Map extends React.Component {
 
   render() {
     return (
-      <img onClick={this.onClick} src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Earthmap1000x500compac.jpg" />
+      <div>
+        <img onClick={this.onClick} src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Earthmap1000x500compac.jpg" />
+        <Griddle results={this.state.cities} />
+      </div>
     )
   }
 }
