@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Map from './components/map';
+import Chart from './components/chart';
 
-ReactDom.render(<Map />, document.getElementById('react'));
+ReactDom.render(<Chart />, document.getElementById('react'));
