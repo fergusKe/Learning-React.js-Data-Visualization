@@ -5,8 +5,8 @@ import Chart from './components/chart';
 const data = {
   type: "bar",
   data: {
-    label: ["Ben", "James", "Mary"],
-    dataset: [{
+    labels: ["Ben", "James", "Mary"],
+    datasets: [{
       label: 'Fun',
       data: [12, 54, 66],
       backgroundColor: "rgba(255, 0, 0, .2)",
@@ -14,13 +14,13 @@ const data = {
     }, {
       label: 'Smart',
       data: [62, 34, 76],
-      backgroundColor: "rgba(255, 0, 0, .4)",
+      backgroundColor: "rgba(0, 0, 255, .4)",
       borderWidth: 1
     }]
   },
-  option: {
-    
+  options: {
+
   }
 }
 
-ReactDom.render(<Chart data={...data} />, document.getElementById('react'));
+ReactDom.render(<Chart {...data} />, document.getElementById('react'));
