@@ -1,26 +1,34 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import Chart from './components/chart';
+import data2 from '../data/data.csv';
+
+console.log(data2)
+
+let obj = data2.shift(),
+		formatedData = {labels: [obj.name], datasets: []},
+		map = new Map();
+
+delete obj.name;
+for(let item in obj){
+	let ds = {label: item,data: [obj.item]};
+	formatedData.datasets.push(ds);
+	map[item] = ds;
+}
+
+data2.forEach((obj, i, a)=>{
+	formatedData.labels.push(obj.name);
+	delete obj.name;
+	for(let item in obj)
+		map[item].data.push(obj[item]);
+});
 
 const data = {
-  type: "bar",
-  data: {
-    labels: ["Ben", "James", "Mary"],
-    datasets: [{
-      label: 'Fun',
-      data: [12, 54, 66],
-      backgroundColor: "rgba(255, 0, 0, .2)",
-      borderWidth: 1
-    }, {
-      label: 'Smart',
-      data: [62, 34, 76],
-      backgroundColor: "rgba(0, 0, 255, .4)",
-      borderWidth: 1
-    }]
-  },
-  options: {
+	type: "bar",
+	data: formatedData,
+	options: {
 
-  }
-}
+	}
+};
 
 ReactDom.render(<Chart {...data} />, document.getElementById('react'));
