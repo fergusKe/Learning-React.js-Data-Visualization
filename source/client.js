@@ -8,7 +8,17 @@ const data = {
 	type: "bar", // bar, horizontalBar, line
 	data: a2c(rawData),
 	options: {
-		responsive: false
+		responsive: false,
+		title: {
+			display: true,
+			text: "People that are in Charts!"
+		},
+		hover: {
+			model: 'label'
+		},
+		tooltips: {
+			mode: 'label' // single
+		}
 	}
 };
 
