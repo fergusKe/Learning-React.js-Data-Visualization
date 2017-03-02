@@ -3,6 +3,19 @@ import ChartJS from 'Chart.js';
 
 export default class Chart extends React.Component {
   componentDidMount() {
+    this.createChart();
+  }
+
+  componentWillUnmount() {
+    this.killChart();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    this.killChart();
+    this.createChart();
+  }
+
+  createChart() {
     const ctx = this.refs['chart'].getContext('2d');
 		let {type, data, options} = this.props;
 
@@ -11,6 +24,10 @@ export default class Chart extends React.Component {
 			data: data,
 			options: options
 		});
+  }
+
+  killChart() {
+    this.chart && this.chart.destroy();
   }
 
   render() {
