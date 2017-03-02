@@ -14,8 +14,8 @@ export default class Chart extends React.Component {
   }
 
   render() {
-    return <div style={{width:800,height:250}}>
-      <canvas ref="chart"></canvas>
-    </div>;
+    let canvasProps = {width: this.props.width, height: this.props.height}
+
+    return <canvas ref="chart" {...canvasProps} ></canvas>;
   }
 }
